@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đổi mật khẩu thất bại</title>
+    <title>Đổi Mật Khẩu Thất Bại</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -15,7 +15,7 @@
         }
 
         p {
-            color: #dc3545;
+            color: #dc3545; /* màu đỏ báo lỗi */
             font-size: 24px;
             margin-bottom: 20px;
         }

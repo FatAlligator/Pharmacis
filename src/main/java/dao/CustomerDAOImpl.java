@@ -76,7 +76,7 @@ public class CustomerDAOImpl implements ICustomerDAO {
 			ps.executeUpdate();
 			ps.close();
 			DatabaseConnection.closeConnection(conn);
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		}
 	}
@@ -98,7 +98,7 @@ public class CustomerDAOImpl implements ICustomerDAO {
 			ps.close();
 
 			DatabaseConnection.closeConnection(conn);
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		}
 		return count;

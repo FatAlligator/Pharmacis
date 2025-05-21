@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đổi mật khẩu thành công</title>
+    <title>Đổi Mật Khẩu Thành Công</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -36,7 +36,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <p>Bạn đã đổi mật khẩu thành công</p>
+            <p>Mật khẩu của bạn đã được đổi thành công</p>
             <a href="login.jsp" class="login-link">Đăng nhập</a>
         </div>
     </div>

@@ -16,24 +16,16 @@ public class OrderDAOImpl implements IOrderDAO {
 	public static void main(String[] args) {
 		System.out.println(new OrderDAOImpl().countOrder());
 	}
-	
+
 
 	private int countOrder() {
 		int count = 0;
-		try {
-			conn = DatabaseConnection.getConnection();
-
-			String countQuery = "SELECT COUNT(*) FROM Orders";
-			ps = conn.prepareStatement(countQuery);
-			ResultSet rs = ps.executeQuery();
-
+		try (Connection conn = DatabaseConnection.getConnection();
+			 PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM Orders");
+			 ResultSet rs = ps.executeQuery()) {
 			if (rs.next()) {
 				count = rs.getInt(1);
 			}
-			rs.close();
-			ps.close();
-
-			DatabaseConnection.closeConnection(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -69,7 +61,7 @@ public class OrderDAOImpl implements IOrderDAO {
 				ps.executeBatch();
 			}
 
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		}
 	}
@@ -88,7 +80,7 @@ public class OrderDAOImpl implements IOrderDAO {
 			ps.setString(2, latestOrderId);
 
 			ps.executeUpdate();
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		} finally {
 			try {
@@ -120,7 +112,7 @@ public class OrderDAOImpl implements IOrderDAO {
 				latestOrderId = rs.getString("orderID");
 				break;
 			}
-		} catch (SQLException e) {
+		} catch (SQLException  e) {
 			e.printStackTrace();
 		} finally {
 			try {
