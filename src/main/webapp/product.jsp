@@ -26,10 +26,6 @@
 
 			<nav>
 				<ul id="top-header" class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="?lang=vi_VN"><i
-							class="fa fa-language"></i> Tiếng Việt</a></li>
-					<li class="nav-item"><a class="nav-link" href="?lang=en_US"><i
-							class="fa fa-language"></i> Tiếng Anh</a></li>
 					<c:if test="${empty user}">
 						<li class="nav-item dropdown"><a class="nav-link "
 														 href="login.jsp"><i class="fa fa-sign-in"></i><span>

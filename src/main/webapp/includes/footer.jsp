@@ -59,7 +59,7 @@
 
 	<!-- Bản quyền -->
 	<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-		© 2023 Thiết kế bởi sinh viên: <a class="text-white" href="https://mdbootstrap.com/">hcmuaf.edu.com</a>
+		© 2025 Thiết kế bởi sinh viên: <a class="text-white" href="https://mdbootstrap.com/">hcmuaf.edu.com</a>
 	</div>
 	<!-- Bản quyền -->
 </footer>
