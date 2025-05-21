@@ -41,7 +41,7 @@
 								</c:if>
 								<li><a class="dropdown-item" href="customer/cartCustomer.jsp">Giỏ hàng</a></li>
 								<li><a class="dropdown-item" href="changePassword.jsp">Đổi mật khẩu</a></li>
-								<li><a class="dropdown-item" href="sign_out">Đăng xuất</a></li>
+								<li><a class="dropdown-item" href="sign_out">Đăng xuất.</a></li>
 							</ul>
 						</li>
 					</c:if>
