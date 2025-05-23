@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,59 +11,52 @@ import dao.DAOFactory;
 import dao.ICustomerDAO;
 import dao.IOrderDAO;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
-/**
- * Servlet implementation class AddNewOrder
- */
+@WebServlet("/customer/AddNewOrder")
 public class AddNewOrder extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddNewOrder() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	public AddNewOrder() {
+		super();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String orderID= UUID.randomUUID().toString();
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String orderID = UUID.randomUUID().toString();
 		String ordererEmail = request.getParameter("ordererEmail");
 		String addressShipping = request.getParameter("adr");
-		OrderDetail o=  (OrderDetail) request.getAttribute("item");
-		List<OrderDetail> orderDetails= new ArrayList<OrderDetail>() ;
-		orderDetails.add(o);
-	
-		ICustomerDAO dao = DAOFactory.getInstance().getCustomerDAO();
-		if(ordererEmail.equals(dao.checkCustomerExist(ordererEmail))){
-			Account acc= dao.findCustomerByEmail(ordererEmail);
-			Order order =  new Order(orderID, acc, addressShipping, orderDetails);
-			IOrderDAO oDao= DAOFactory.getInstance().getOrderDAO();
-			oDao.saveOrder(order);
-			request.getRequestDispatcher("order-succeed.jsp").forward(request, response);
-		}
-		
-		else {
-			request.getRequestDispatcher("order.jsp").forward(request, response);
-		}
-		
-		
-	}
 
+		ICustomerDAO dao = DAOFactory.getInstance().getCustomerDAO();
+		Account acc = dao.findCustomerByEmail(ordererEmail);
+
+		if (acc == null) {
+			request.setAttribute("error", "❌ Email không tồn tại. Vui lòng kiểm tra lại.");
+			request.getRequestDispatcher("/customer/order.jsp").forward(request, response);
+			return;
+		}
+
+		HttpSession session = request.getSession();
+		Order sessionOrder = (Order) session.getAttribute("order");
+		if (sessionOrder == null || sessionOrder.getOrderDetails().isEmpty()) {
+			request.setAttribute("error", "❌ Giỏ hàng trống. Vui lòng thêm sản phẩm trước khi đặt hàng.");
+			request.getRequestDispatcher("/customer/order.jsp").forward(request, response);
+			return;
+		}
+
+		// Lưu đơn hàng mới
+		Order newOrder = new Order(orderID, acc, addressShipping, sessionOrder.getOrderDetails());
+		IOrderDAO orderDAO = DAOFactory.getInstance().getOrderDAO();
+		orderDAO.saveOrder(newOrder);
+
+		// Xóa giỏ hàng khỏi session
+		session.removeAttribute("order");
+
+		response.sendRedirect("order-succeed.jsp");
+	}
 }

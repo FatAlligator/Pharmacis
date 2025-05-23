@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -106,7 +106,7 @@
 	                </div>
                 </c:if>
                 <div class="float-right">
-                    <a href="../product.jsp"><button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><fmt:message>cart.back</fmt:message></button></a>
+                    <a href="../product-list"><button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3"><fmt:message>cart.back</fmt:message></button></a>
                     <a href="order.jsp"><button type="button" class="btn btn-lg btn-primary mt-2"><fmt:message>cart.button.checkout</fmt:message></button></a> 
                 </div>
             </div>

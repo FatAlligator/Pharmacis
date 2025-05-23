@@ -59,7 +59,7 @@
 			<nav>
 				<ul id="main-menu">
 					<li><a href="index.jsp"><span style="color: blue">Trang chủ</span></a></li>
-					<li><a href="product.jsp"><span style="color: blue">Sản phẩm</span></a></li>
+					<li><a href="product-list"><span style="color: blue">Sản phẩm</span></a></li>
 					<!--
                     <li><a href="#">Khuyến mãi</a></li>
                     <li><a href="#">Giới thiệu</a></li>
@@ -95,6 +95,13 @@
 			</p>
 			<hr>
 		</div>
+
+		<!-- Thêm phần hiển thị thông báo ở đây -->
+		<c:if test="${not empty message}">
+			<div style="background-color: #d4edda; color: #155724; padding: 10px; margin: 10px 0; border: 1px solid #c3e6cb; border-radius: 5px;">
+					${message}
+			</div>
+		</c:if>
 
 		<form action="AscendingOrder">
 			<button type="submit" class="btn btn-outline-primary">

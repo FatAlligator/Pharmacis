@@ -44,6 +44,7 @@ public class AddToCartServlet extends HttpServlet {
 		String customerId = request.getParameter("customerID");
 		ICustomerDAO customerDAO = DAOFactory.getInstance().getCustomerDAO();
 		Account account = customerDAO.findCustomerByID(customerId);
+
 		if (productId != null) {
 			ProductDAOImpl productDAO = new ProductDAOImpl();
 			Product product = productDAO.findProductById(productId);
@@ -92,12 +93,15 @@ public class AddToCartServlet extends HttpServlet {
 
 					session.setAttribute("order", order);
 				}
+
+				// Đặt thông báo vào request attribute
+				request.setAttribute("message", "Đã thêm sản phẩm vào giỏ hàng thành công!");
 			}
-			request.getRequestDispatcher("/product.jsp").forward(request, response);
-		} else {
-			request.getRequestDispatcher("/product.jsp").forward(request, response);
 		}
+
+		request.getRequestDispatcher("/product.jsp").forward(request, response);
 	}
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
