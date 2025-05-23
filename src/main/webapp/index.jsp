@@ -54,7 +54,8 @@
 			<nav>
 				<ul id="main-menu">
 					<li><a href="index.jsp"><span style="color: blue">Trang chủ</span></a></li>
-					<li><a href="product.jsp">Sản phẩm</a></li>
+					<li><a href="product-list">Sản phẩm</a>
+					</li>
 					<!-- <li><a href="#">Khuyến mãi</a></li>
                     <li><a href="#">Giới thiệu</a></li> -->
 				</ul>
@@ -82,7 +83,7 @@
 			</h2>
 		</div>
 		<div class="resize">
-			<a href="product.jsp" class="btn btn-primary">Thử ngay</a>
+			<a href="product-list" class="btn btn-primary">Thử ngay</a>
 		</div>
 	</div>
 </div>

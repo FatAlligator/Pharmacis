@@ -48,7 +48,7 @@
 			<nav>
 				<ul id="main-menu">
 					<li><a href="index.jsp">Trang chủ</a></li>
-					<li><a href="product.jsp">Sản phẩm</a></li>
+					<li><a href="product-list">Sản phẩm</a></li>
 					<li><a href="#">Khuyến mãi</a></li>
 					<li><a href="#">Giới thiệu</a></li>
 				</ul>

@@ -6,7 +6,12 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
 	public static Connection getConnection() throws SQLException {
-		String dbURL = "jdbc:mysql://localhost:3306/phar_db?encrypt=false";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver"); // Load driver explicit
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		String dbURL = "jdbc:mysql://localhost:3306/phar_db?useSSL=false&serverTimezone=UTC";
 		String username = "root";
 		String password = "";
 		Connection conn = DriverManager.getConnection(dbURL, username, password);
@@ -16,6 +21,7 @@ public class DatabaseConnection {
 		}
 		return null;
 	}
+
 
 	public static void closeConnection(Connection connection) throws SQLException {
 		if (connection != null && !connection.isClosed()) {
